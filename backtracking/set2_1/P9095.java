@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
+// 1, 2, 3 더하
 public class P9095 {
 	
 	private static int test_case, target, ret;
