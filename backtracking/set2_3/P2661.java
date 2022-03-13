@@ -7,25 +7,33 @@ import java.io.InputStreamReader;
 public class P2661 {
 
 	static int n, number[];
-	
+    static boolean flag;
+	static StringBuilder sb;
+    
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		
+		sb = new StringBuilder();
+        
 		n = Integer.parseInt(br.readLine());
 		number = new int[n];
 		number[0] = 1;
+        
+        flag = false;
 		
 		backtracking(0, 1);
+        System.out.println(sb.toString());	// System.exit(0)이 더 많은 시간과 메모리를 사용함 
 	}
 	
 	static void backtracking(int idx, int num) {
+        if(flag)
+            return;
+        
 		if(idx == n) {
-			StringBuilder sb = new StringBuilder();
 			for(int i:number)
 				sb.append(i);
 			
-			System.out.println(sb.toString());
-			System.exit(0);
+			flag = true;
+            return;
 		}
 		
 		number[idx] = num;
@@ -47,10 +55,6 @@ public class P2661 {
 	}
 	
 	static boolean possible(int idx) {
-		// 이전 값과 같다면,,
-//		if(number[idx-1] == num)
-//			return false;
-		
 		for(int i=1; i<=(idx+1)/2; i++) {
 			boolean check = true;
 			
