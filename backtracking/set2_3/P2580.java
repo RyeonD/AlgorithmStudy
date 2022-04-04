@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// 스도쿠 문제 
 public class P2580 {
 
 	static int size = 9;
@@ -62,13 +63,13 @@ public class P2580 {
 	}
 
 	static boolean possible(int row, int col, int num) {
-		// 가로 - 세로 확인
+		// 1) 가로 - 세로 확인
 		for(int i=0; i<size; i++) {
 			if(sudoku[row][i] == num || sudoku[i][col] == num)
 				return false;
 		}
 
-		// 3x3 정사각형 확인 
+		// 2) 3x3 정사각형 확인 
 		int rowStart = row/3*3;
 		int colStart = col/3*3;
 		
