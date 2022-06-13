@@ -65,6 +65,20 @@ public class P2206 {
 
 				if(r < 0 || r >= n || c < 0 || c >= m) continue;
 
+				// visited[r][c] <= curr.broke 면, 벽은 1번만 부술 수 있기 때문에 방문 불가 
+				if(visited[r][c] > curr.broke) {
+					if(path[r][c] == 0) {
+						q.add(new Location(r, c, curr.dis+1, curr.broke));
+						visited[r][c] = curr.broke;
+					}
+					else {
+						if(curr.broke == 0) {
+							q.add(new Location(r, c, curr.dis+1, curr.broke+1));
+							visited[r][c] = curr.broke + 1;
+						}
+
+					}
+				}
 			}
 		}
 		
